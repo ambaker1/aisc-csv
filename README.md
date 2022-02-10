@@ -1,5 +1,6 @@
 # aisc-csv
 CSV files extracted from the AISC shapes database MS Excel spreadsheet, separated into US and SI versions, and pre-processed for easier integration into other software.
+Property descriptions and applicable units are described in the source Excel spreadsheet.
 
 Pre-processing:
 - Numbers are formatted as decimal.
