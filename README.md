@@ -1,6 +1,9 @@
 # aisc-csv
-CSV files extracted from the AISC shapes database MS Excel spreadsheet, separated into US and SI versions.
-All column headers are the same except that tan(α) is converted to tan(a).
+CSV files extracted from the AISC shapes database MS Excel spreadsheet, separated into US and SI versions, and pre-processed for easier integration into other software.
+Pre-processing:
+- Numbers are formatted as decimal.
+- Long-dashes (empty data) are replaced with blank cells.
+- Property "tan(α)" is renamed to "tan(a)".
 
 ## Version 15.0 database disclaimer
 The data in the v15.0 folder was copied from the "AISC Shapes Database v15.0", which has the following disclaimer:
