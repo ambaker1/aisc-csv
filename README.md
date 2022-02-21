@@ -1,4 +1,4 @@
-# aisc-csv
+# AISC Shapes Database CSV Files
 CSV files extracted from the AISC shapes database MS Excel spreadsheet, separated into US and SI versions, and pre-processed for easier integration into other software.
 Property descriptions and applicable units are described in the source Excel spreadsheet.
 
@@ -6,6 +6,13 @@ Pre-processing:
 - Numbers are formatted as decimal.
 - Long-dashes (empty data) are replaced with blank cells.
 - Property "tan(α)" is renamed to "tan(a)".
+
+## readAISC.tcl
+A simple Tcl procedure is provided which reads the AISC CSV file into a double-nested Tcl dictionary, for easy access in OpenSees.
+
+    source readAISC.tcl
+    set aisc [readAISC Shapes-US.csv]
+    set A [dict get $aisc W14X90 A]; # 26.5
 
 ## Version 15.0 database disclaimer
 The data in the v15.0 folder was copied from the "AISC Shapes Database v15.0", which has the following disclaimer:
