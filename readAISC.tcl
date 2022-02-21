@@ -6,9 +6,6 @@
 # The first keys in the resulting dictionary are the EDI_Std_Nomenclature field
 # in the AISC database, not the AISC_Manual_Label.
 
-# Version history
-# v1.0:         Initial implementation
-
 # Copyright (C) 2022 Alex Baker, ambaker1@mtu.edu
 # All rights reserved. 
 
