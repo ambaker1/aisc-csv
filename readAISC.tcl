@@ -24,13 +24,19 @@
 # filename:     Filename of AISC csv file.
 
 proc readAISC {filename} {
-    set fid [open $filename r]
+    # Try to open file for reading
+    if {[catch {open $filename r} fid]} {
+        return -code error "Unable to read file"
+    }
+    # Read file and separate header from data
     set data [read -nonewline $fid]
     close $fid
     set lines [lassign [split $data \n] header]
     set fields [lrange [split $header ,] 1 end]
+    # Create AISC database dictionary
     set aiscDict ""
     foreach line $lines {
+        # Separate key (EDI_Std_Nomenclature) from property values
         set values [lassign [split $line ,] key]
         dict set aiscDict $key ""
         foreach field $fields value $values {
@@ -44,7 +50,7 @@ proc readAISC {filename} {
 }
 
 # Test:
-if {1} {
+if {0} {
     # Import AISC database and store as dictionary
     set aisc [readAISC v15.0/Shapes-US.csv]
     # Perform simple query
