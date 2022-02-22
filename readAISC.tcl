@@ -45,23 +45,3 @@ proc readAISC {filename} {
     }
     return $aiscDict
 }
-
-# Test:
-if {0} {
-    # Import AISC database and store as dictionary
-    set aisc [readAISC v15.0/Shapes-US.csv]
-    # Perform simple query
-    puts "Area of W14X90: [dict get $aisc W14X90 A]"; # 26.5
-    # Filter by shape pattern (all wide-flange shapes)
-    set Wshapes [dict filter $aisc key {W[0-9]*}]
-    puts "Total shapes: [dict size $aisc]"
-    puts "Wide-flange shapes: [dict size $Wshapes]"
-    # Filter by value
-    set selected [dict filter $Wshapes script {shape data} {
-        expr {[dict get $data A] > 200.0}
-    }]
-    puts "Wide-flange shapes with A > 100.0:"
-    dict for {shape data} $selected {
-        puts "    $shape: [dict get $data A]"
-    }
-}
